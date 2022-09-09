@@ -1,3 +1,6 @@
+import asyncio
+import time
+
 class Chat:
 	def __init__(self, chat_id, keyboard_markup):
 		self.chat_id = chat_id
@@ -16,4 +19,15 @@ class Chat:
 		self.keyboard = markup
 
 class Timer:
+	def __init__(self, name = "Timer", time = 0):
+		self.time = time
+		self.name = name
+		# self.time_start = datetime.time()
+
+	def timer_stop(func):
+	
+	async def timer_start(self):
+		time.sleep(self.time)
+
+		
 	
