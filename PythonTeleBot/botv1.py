@@ -1,7 +1,10 @@
 import telebot
 from telebot import types
+from chat import Chat, Timer
+import asyncio
 
 myBot = telebot.TeleBot("5319467602:AAHt1plxDpMvmPlwKvjqqqlpPZ8qfDju6iE")
+
 
 
 	
@@ -17,7 +20,7 @@ def show_start_menu(message):
 @myBot.message_handler(content_types="text")
 def operate_commands(message):
 	pass
-@myBot.message_handler(commands=[]])
+@myBot.message_handler(commands=[])
 def show_start_menu(message):
-	
+	pass
 myBot.infinity_polling()

@@ -22,12 +22,11 @@ class Timer:
 	def __init__(self, name = "Timer", time = 0):
 		self.time = time
 		self.name = name
-		# self.time_start = datetime.time()
-
-	def timer_stop(func):
 	
-	async def timer_start(self):
+	async def timer_start(self, func):
 		time.sleep(self.time)
+		def on_timer_end(func):
+			func(self.name)
 
 		
 	
