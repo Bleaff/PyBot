@@ -20,7 +20,10 @@ def show_start_menu(message):
 @myBot.message_handler(content_types="text")
 def operate_commands(message):
 	pass
-@myBot.message_handler(commands=[])
+@myBot.message_handler(commands=["button"])
 def show_start_menu(message):
 	pass
+
+
+
 myBot.infinity_polling()
