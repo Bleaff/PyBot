@@ -20,17 +20,11 @@ class Chat:
 	def set_markup(self, markup):
 		self.keyboard = markup
 
-# def timer_start(func):
-# 	time.sleep(self.time)
-# 	def on_timer_end(func):
-# 		func(self.name, self.time)
-# 	return on_timer_end(func)
-
 class Timer:
 	def __init__(self, name = "Timer", time = 0):
 		self.time = time
 		self.name = name
-	@staticmethod
+
 	async def start_timer(func):
 		@wraps(func)
 
@@ -45,6 +39,13 @@ class Timer:
 		await time.sleep(self.time)
 		print(f"{self.name} set on {self.time} sec and ends")
 
+def timer_start(func : function, timer : Timer):
+	time.sleep(timer.time)
+	def on_timer_end(func):
+		func(timer.name, timer.time)
+	return on_timer_end(func)
+
+
 
 if __name__ == "__main__":
 	t1 = Timer("Tasks", 15)
@@ -53,5 +54,5 @@ if __name__ == "__main__":
 	loop = 	asyncio.get_event_loop()
 	asyncio.ensure_future(t1.test())
 	asyncio.ensure_future(t2.test())
-	loop.run_until_complete([t1.test(), t2.test()])
+	loop.run_until_complete()
 	print("Main")
