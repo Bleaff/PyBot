@@ -1,4 +1,3 @@
-import asyncio
 
 async def add_timer(name, time):
 	await asyncio.sleep(time)
