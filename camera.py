@@ -2,9 +2,8 @@ import cv2
 
 def take_photo():
 	cam = cv2.VideoCapture(0)
-	for _ in range(30):
+	for _ in range(15):
 		result, image = cam.read()
-	
 	if result:
 		photo_path = "photo.jpg"
 		cv2.imwrite(photo_path, image)
