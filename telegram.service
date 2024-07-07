@@ -1,0 +1,14 @@
+[Unit]
+Description=Telegram Bot Service
+After=network.target
+
+[Service]
+ExecStart=/home/bleaf/Projects/PyBot/main.py
+WorkingDirectory=/home/bleaf/Projects/PyBot
+Restart=always
+User=bleaf
+Group=bleaf
+Environment="PATH=/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target
