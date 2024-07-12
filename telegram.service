@@ -3,12 +3,13 @@ Description=Telegram Bot Service
 After=network.target
 
 [Service]
-ExecStart=/home/bleaf/Projects/PyBot/main.py
-WorkingDirectory=/home/bleaf/Projects/PyBot
+ExecStart=/home/orangepi/Projects/PyBot/.venv/bin/python /home/orangepi/Projects/PyBot/main.py
+WorkingDirectory=/home/orangepi/Projects/PyBot
 Restart=always
-User=bleaf
-Group=bleaf
+User=orangepi
+Group=orangepi
 Environment="PATH=/usr/bin:/usr/local/bin"
 
 [Install]
 WantedBy=multi-user.target
+
