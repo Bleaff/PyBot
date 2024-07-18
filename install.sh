@@ -19,6 +19,10 @@ cp telegram.service $SERVICE_FILE_PATH
 echo "Setting permissions for $SERVICE_FILE_PATH"
 chmod 644 $SERVICE_FILE_PATH
 
+# Set proper permissions for the pull script
+echo "Setting permissions for pull.sh"
+chmod +x /home/orangepi/Projects/PyBot/pull.sh
+
 # Reload systemd manager configuration
 echo "Reloading systemd manager configuration"
 systemctl daemon-reload
