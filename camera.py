@@ -11,14 +11,8 @@ def take_photo():
     for _ in range(15):
         result, image = cam.read()
     if result:
-        photo_path = "photo.jpg"
-        res = cv2.imwrite(photo_path, image)
         cam.release()
-        if res:
-            logger.info("Photo saved successfully")
-        else:
-            logger.error("Failed to save the photo")
-        return photo_path
+        return cv2.imencode('.jpg', image)[1].tobytes()
     else:
         cam.release()
         logger.error("Failed to take a photo with the webcam")

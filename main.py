@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 from aiogram.fsm.context import FSMContext
 from registration import FormRegistration
 
+from datetime import datetime
+
 # Загрузка переменных окружения из файла .env
 load_dotenv()
 API_TOKEN = os.getenv('TELEGRAM_API_TOKEN')
@@ -108,7 +110,6 @@ async def send_photo(callback_query: types.CallbackQuery, state=FSMContext):
         await callback_query.message.reply_photo(FSInputFile(photo_path), reply_markup=reply_markup)
         logging.info(f"Sent photo to user {callback_query.from_user.id}")
 
-
 @dp.message(FormRegistration.AllReady, F.text == 'Photo')
 async def send_photo(message: Message, state=FSMContext):
     state_now = await state.get_state()
@@ -117,12 +118,11 @@ async def send_photo(message: Message, state=FSMContext):
         await message.answer("Вы ещё не зарегистрированы")
     else:
         logging.info(f"Photo button clicked by user {message.from_user.id}")
-        photo_path = take_photo()
-        await message.reply_photo(FSInputFile(photo_path), reply_markup=reply_markup)
+        photo_bytes = take_photo()
+        await message.reply_photo(photo_bytes, caption=f"Photo_{datetime.now().isoformat()}", reply_markup=reply_markup)
         logging.info(f"Sent photo to user {message.from_user.id}")
 
 async def main():
-    logging.info("Starting bot")
     await dp.start_polling(bot, skip_updates=True)
     logging.info("Bot started")
 
